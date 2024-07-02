@@ -1,0 +1,22 @@
+.header-list-menu {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin: 0;
+  padding: 0;
+}
+
+.header-item-menu-link {
+  display: inline-block;
+  color: white;
+  text-decoration: none;
+  padding: 10px;
+  &:hover {
+    background-color: red;
+  }
+}
+
+.header-navlink-active {
+  background-color: red;
+}
