@@ -3,12 +3,14 @@ import Header from "./Header";
 import Navigation from "./Navigation";
 import { Box } from "@mui/material";
 import { Outlet } from "react-router-dom";
+import Search from "./Search";
 
 const Home: React.FC = () => {
   return (
-    <Box maxWidth={1140} paddingLeft={15} paddingRight={15}>
+    <Box>
       <Header />
       <Navigation />
+      <Search />
       <Outlet />
     </Box>
   );

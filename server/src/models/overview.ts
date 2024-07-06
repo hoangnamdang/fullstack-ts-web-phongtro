@@ -1,7 +1,7 @@
 import { DataTypes, Model, Optional, CreateOptions } from "sequelize";
 import { sequelizeConnection } from "../config/connection";
 export interface OverviewAttributes {
-   id: string,
+   id: string;
    code: string;
    area: string;
    type: string;
@@ -11,9 +11,9 @@ export interface OverviewAttributes {
    expired: Date;
 }
 interface OverviewInput extends Optional<OverviewAttributes, "id"> {}
-export class Overview extends Model<OverviewAttributes, OverviewInput> {
+class Overview extends Model<OverviewAttributes, OverviewInput> {
    declare id: string;
-   declare code : string;
+   declare code: string;
    declare area: string;
    declare type: string;
    declare target: string;
@@ -25,7 +25,7 @@ Overview.init(
    {
       id: {
          type: DataTypes.STRING,
-         primaryKey: true
+         primaryKey: true,
       },
       code: DataTypes.STRING,
       area: DataTypes.STRING,
@@ -40,3 +40,5 @@ Overview.init(
       modelName: "Overview",
    },
 );
+
+export default Overview;

@@ -33,7 +33,6 @@ const Header = () => {
       },
     },
   ];
-  console.log(dataRegister);
 
   return (
     <Box
@@ -41,7 +40,7 @@ const Header = () => {
       justifyContent={"space-between"}
       alignItems={"center"}
     >
-      <Link to={"/"}>
+      <Link to={PATH.HOME}>
         <Box component={"img"} src={logo} width={240} height={70} />
       </Link>
       <Box

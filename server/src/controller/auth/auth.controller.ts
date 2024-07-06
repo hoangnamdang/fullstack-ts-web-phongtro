@@ -13,7 +13,7 @@ export const register = async (req: Request, res: Response) => {
                 msg: "missing input"
             })
         }
-        const response = await authService.regiser(data)
+        const response = await authService.register(data)
         return res.status(200).json(response)
     } catch (error) {
         return res.status(500).json({

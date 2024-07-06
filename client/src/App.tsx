@@ -6,12 +6,14 @@ import RoomForRent from "./containers/Public/RoomForRent";
 import HouseForRent from "./containers/Public/HouseForRent";
 import OfficeSpace from "./containers/Public/OfficeSpace";
 import RentalDepartment from "./containers/Public/RentalDepartment";
+import HomePage from "./containers/Public/HomePage";
 const App: React.FC = () => {
   return (
     <div>
       <Router>
         <Routes>
-          <Route path="/" element={<Home />}>
+          <Route path={PATH.HOME} element={<Home />}>
+            <Route path="*" element={<HomePage />} />
             <Route path={PATH.REGISTER} element={<Register />} />
             <Route path={PATH.LOGIN} element={<Login />} />
             <Route path={PATH.CHO_THUE_PHONG_TRO} element={<RoomForRent />} />

@@ -1,17 +1,11 @@
 // import chothuephongtro from "../../data/chothuephongtro.json";
 // import nhachothue from "../../data/nhachothue.json";
-// import chothuecanho from "../../data/chothuecanho.json";
+import chothuecanho from "../../data/chothuecanho.json";
 import chothuematbang from "../../data/chothuematbang.json";
 import {parse} from "date-fns"
-import vi from "date-fns/locale/vi";
 import { v4 } from "uuid";
-import { Category } from "../../models/category";
-import { generateCode } from "../../utils/generateCode";
-import { Post } from "../../models/post";
-import { Overview } from "../../models/overview";
-import { Label } from "../../models/label";
-import { Attribute } from "../../models/attribute";
-import Image from "../../models/image";
+import { Post, Category, Image, Overview, Label, Attribute} from "../../models";
+import { generateLabelCode } from "../../utils/generateCode";
 interface HeaderAttributes {
     title: string;
     address: string;
@@ -24,12 +18,12 @@ interface HeaderAttributes {
 }
 }
 export const insertData = () =>
-  new Promise(async (resove, reject) => {
+  new Promise(async (resolve, reject) => {
     try {
-      const categoryCode = "CTMB";
-      const categoryValue = "Cho thuê mặt bằng";
-      const categoryHeader = chothuematbang?.header?.title;
-      const categorySubheader = chothuematbang?.header?.description;
+      const categoryCode = "CTCH";
+      const categoryValue = "Cho thuê căn hộ";
+      const categoryHeader = chothuecanho?.header?.title;
+      const categorySubheader = chothuecanho?.header?.description;
     
       await Category.create({
         code: categoryCode,
@@ -37,10 +31,10 @@ export const insertData = () =>
         header: categoryHeader,
         subheader: categorySubheader,
       });
-      for (let item of chothuematbang.body) {
+      for (let item of chothuecanho.body) {
         const header: HeaderAttributes = item?.header
-        const labelCode = generateCode(5);
-        const attributesId = v4();
+        const labelCode = generateLabelCode(item?.overview?.content.find((i) => i.name === "Chuyên mục:")
+        ?.content || "");
         const userId = v4();
         const overviewId = v4();
         const imagesId = v4();
@@ -53,7 +47,7 @@ export const insertData = () =>
           star: header.star || "",
           labelCode: labelCode,
           address: header.address,
-          attributesId: attributesId,
+          attributesId: attributeId,
           categoryCode: categoryCode,
           description: JSON.stringify(item?.mainContent?.content),
           userId: userId,
@@ -81,10 +75,13 @@ export const insertData = () =>
             (i) => i.name === "Ngày hết hạn:"
           )?.content || "", "EEEE k:mm MM/dd/yyyy", new Date())),
         });
-        await Label.create({
-          code: labelCode,
-          value: item?.overview?.content.find((i) => i.name === "Chuyên mục:")
+        await Label.findOrCreate({
+          where: {code: labelCode},
+          defaults: {
+            code: labelCode,
+            value: item?.overview?.content.find((i) => i.name === "Chuyên mục:")
             ?.content || "",
+          }
         });
         await Attribute.create({
           id: attributeId,
@@ -98,7 +95,7 @@ export const insertData = () =>
           image: JSON.stringify(item?.images),
         });
       }
-      resove("done");
+      resolve("done");
     } catch (error) {
       reject(error);
     }

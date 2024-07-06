@@ -14,23 +14,25 @@ export interface UserAttributes {
    password: string,
    phone: string,
    zalo: string,
-   avatar: string,
+   avatar: Blob,
+   fbUrl: string,
    readonly createdAt: Date,
    readonly updatedAt: Date
 }
 // we're telling the Model that 'id' is optional
 // when creating an instance of the model (such as using Model.create()).
-export interface UserInput extends Optional<UserAttributes, "id" | "avatar" | "createdAt" | "updatedAt" | "zalo"> {}
+export interface UserInput extends Optional<UserAttributes, "id" | "avatar" | "createdAt" | "updatedAt" | "zalo" | "fbUrl"> {}
 
 export interface UserOutput extends Required<UserAttributes> {}
 
-export class User extends Model<UserAttributes, UserInput> {
+class User extends Model<UserAttributes, UserInput> {
    id!: string;
    name!: string;
    password!: string;
    phone!: string;
    zalo!: string;
-   avatar!: string;
+   avatar!: Blob;
+   fbUrl!: string;
    readonly createdAt!: Date;
    readonly updatedAt!: Date;
 }
@@ -45,9 +47,12 @@ User.init(
       password: DataTypes.STRING,
       phone: DataTypes.STRING,
       zalo: DataTypes.STRING,
-      avatar: DataTypes.STRING,
+      avatar: DataTypes.BLOB("long"),
+      fbUrl: DataTypes.STRING,
       createdAt: DataTypes.DATE,
       updatedAt: DataTypes.DATE,
    },
    { sequelize: sequelizeConnection, modelName: "User" },
 );
+
+export default User;

@@ -6,6 +6,7 @@ import storage from 'redux-persist/lib/storage' // defaults to localStorage for 
 import autoMergeLevel1 from "redux-persist/es/stateReconciler/autoMergeLevel1";
 import { DataAuth } from "../features/auth/auth.type";
 import appSlice from "../features/app/app.slice";
+import postSlice from "../features/post/post.slice";
 
 
 const persistConfig = {
@@ -19,6 +20,7 @@ export const store = configureStore({
   reducer: {
     auth: persistReducer<DataAuth>(persistConfig, authSlice),
     app: appSlice,
+    post: postSlice,
   },
 });
 

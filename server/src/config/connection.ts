@@ -11,6 +11,7 @@ export const sequelizeConnection = new Sequelize(
       host: "localhost",
       port: dbPort,
       dialect: "mysql",
+      logging: false,
    },
 );
 

@@ -1,5 +1,5 @@
 import { v4 } from "uuid";
-import { User } from "../../models/user";
+import { User } from "../../models";
 import { IAuthData, ILogin, IRegister } from "../../types";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
@@ -9,7 +9,7 @@ const salt = bcrypt.genSaltSync(12);
 const hashPassword = (password: string): string => {
    return bcrypt.hashSync(password, salt);
 };
-export const regiser = (params: IRegister): Promise<IAuthData> =>
+export const register = (params: IRegister): Promise<IAuthData> =>
    new Promise(async (resolve, reject) => {
       try {
 
@@ -22,7 +22,6 @@ export const regiser = (params: IRegister): Promise<IAuthData> =>
                id: v4(),
             }
          });
-         console.log(response);
          
          const token =
             response[1] &&

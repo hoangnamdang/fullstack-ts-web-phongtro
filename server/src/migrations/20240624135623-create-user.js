@@ -21,6 +21,9 @@ module.exports = {
             type: Sequelize.STRING,
          },
          avatar: {
+            type: Sequelize.BLOB("long"),
+         },
+         fbUrl: {
             type: Sequelize.STRING,
          },
          createdAt: {

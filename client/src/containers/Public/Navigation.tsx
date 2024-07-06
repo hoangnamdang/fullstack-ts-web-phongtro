@@ -12,9 +12,16 @@ const Navigation = () => {
   useEffect(() => {
     dispatch(appSlice.getCategory());
   }, [dispatch]);
+
   return (
     <>
-      <Box bgcolor={"blue"} display={"flex"} alignContent={"center"} gap={3}>
+      <Box
+        bgcolor={"blue"}
+        display={"flex"}
+        alignContent={"center"}
+        gap={3}
+        marginBottom={1}
+      >
         <ul className="header-list-menu">
           <li className="header-item-menu">
             <NavLink
