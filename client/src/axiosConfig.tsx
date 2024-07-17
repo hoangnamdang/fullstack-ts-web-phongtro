@@ -1,11 +1,7 @@
 import axios from "axios";
-import env from "react-dotenv";
-console.log(env);
-
 const instance = axios.create({
   baseURL: "http://localhost:4000",
 });
-console.log(env.API_URL);
 
 // Add a request interceptor
 instance.interceptors.request.use(

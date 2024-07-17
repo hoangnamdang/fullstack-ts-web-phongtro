@@ -73,9 +73,9 @@ const ListItem = ({ post }: { post: Post }) => {
             whiteSpace={"nowrap"}
             fontWeight={"bold"}
           >
-            {post?.Attribute?.price || 0}
+            {post?.price || 0}
           </Typography>
-          <Typography>60m²</Typography>
+          <Typography>{post?.acreage || 0}</Typography>
           <Typography
             sx={{
               overflow: "hidden",

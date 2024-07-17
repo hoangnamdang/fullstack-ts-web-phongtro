@@ -12,6 +12,8 @@ export interface PostAttributes {
    userId: string;
    overviewId: string;
    imagesId: string;
+   price: number;
+   acreage: number;
 }
 
 export interface PostInput extends Optional<PostAttributes, "id"> {}
@@ -29,6 +31,8 @@ interface PostModel extends Model<InferAttributes<PostModel>, InferCreationAttri
    userId: string;
    overviewId: string;
    imagesId: string;
+   price: number,
+   acreage: number,
  }
  
  const PostModel = sequelizeConnection.define<PostModel>('Post', {
@@ -46,6 +50,8 @@ interface PostModel extends Model<InferAttributes<PostModel>, InferCreationAttri
    userId: DataTypes.STRING,
    overviewId: DataTypes.STRING,
    imagesId: DataTypes.STRING,
+   price: DataTypes.DECIMAL(10,2),
+   acreage: DataTypes.INTEGER,
  });
 
 export default PostModel;

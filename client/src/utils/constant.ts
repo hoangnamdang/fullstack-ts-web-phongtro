@@ -18,3 +18,6 @@ export const dataProvince = [
     image: "https://phongtro123.com/images/location_hcm.jpg",
   },
 ];
+
+
+export const pairSearchUrl = new Map([["page", "page"], ["minPrice", "maxPrice"], ["maxPrice", "minPrice"], ["minAcreage", "maxAcreage"], ["maxAcreage", "minAcreage"]]);

@@ -6,10 +6,10 @@ export interface Post {
   address: string;
   categoryCode: string;
   description: string;
+  price: string,
+  acreage: string,
   Image: { image: string };
   Attribute:  {
-    price: string,
-    acreage: string,
     published: string,
     hashtag: string};
   User: {
@@ -22,5 +22,13 @@ export interface Post {
 }
 
 export interface IPostState {
-  listPost: Post[];
+  dataPosts: {
+    count: number,
+    listPost: Post[];
+    totalPage: number;
+  }
+}
+
+export interface IPostQuery {
+  limit: string
 }

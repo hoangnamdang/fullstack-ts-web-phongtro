@@ -7,6 +7,7 @@ import autoMergeLevel1 from "redux-persist/es/stateReconciler/autoMergeLevel1";
 import { DataAuth } from "../features/auth/auth.type";
 import appSlice from "../features/app/app.slice";
 import postSlice from "../features/post/post.slice";
+import filterSlice from "../features/filter/filter.slice";
 
 
 const persistConfig = {
@@ -21,6 +22,7 @@ export const store = configureStore({
     auth: persistReducer<DataAuth>(persistConfig, authSlice),
     app: appSlice,
     post: postSlice,
+    filter: filterSlice
   },
 });
 

@@ -2,4 +2,7 @@ https://github.com/sequelize/sequelize/issues/9760
 https://sequelize.org/docs/v6/other-topics/typescript/#usage
 
 1.bug khi dùng typescript. khi dùng belongsTo, hasOne hoặc(belongsTo, hasMany vvv...) thì 2 model có liên kết(associate) phải ghi chung 1 file mới run được 
-fix lỗi bug 1: https://stackoverflow.com/questions/73319033/sequelize-model-is-not-associated-to-post
+fix lỗi bug 1: https://stackoverflow.com/questions/73319033/sequelize-model-is-not-associated-to-post 
+
+
+https://stackoverflow.com/questions/65800658/react-router-v6-navigate-to-a-url-with-searchparams

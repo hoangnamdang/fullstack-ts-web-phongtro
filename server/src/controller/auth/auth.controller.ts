@@ -5,8 +5,6 @@ import { IRegister, ILogin } from "../../types";
 export const register = async (req: Request, res: Response) => {
     try {
         const data: IRegister = req.body
-        console.log("register",data.name, data.password, data.phone);
-        
         if(!data.name || !data.phone || !data.password) {
             return res.status(400).json({
                 err: -1,

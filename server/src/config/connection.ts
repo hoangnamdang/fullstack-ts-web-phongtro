@@ -1,6 +1,6 @@
 import { Sequelize } from "sequelize";
-import dotevn from "dotenv";
-dotevn.config();
+import dotenv from "dotenv";
+dotenv.config();
 const dbName = process.env.DB_DATABASENAME as string;
 const dbUser =   process.env.DB_USERNAME as string;
  const dbPassword = process.env.DB_PASSWORD;
@@ -12,6 +12,9 @@ export const sequelizeConnection = new Sequelize(
       port: dbPort,
       dialect: "mysql",
       logging: false,
+      dialectOptions: {
+         decimalNumbers: true
+      }
    },
 );
 
