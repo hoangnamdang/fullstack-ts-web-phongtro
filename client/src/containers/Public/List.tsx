@@ -58,7 +58,7 @@ const List = () => {
   };
 
   return (
-    <Box ref={refBox} sx={{ backgroundColor: "white" }}>
+    <Box ref={refBox} sx={{ backgroundColor: "white", marginBottom: 4 }}>
       <Box sx={{ padding: [3, 2] }}>
         <Typography sx={{ fontWeight: "bold" }}>
           Tổng 128.774 kết quả
@@ -93,7 +93,7 @@ const List = () => {
       {listPost.map((post) => {
         return <ListItem key={post.id} post={post} />;
       })}
-      <Stack spacing={2}>
+      <Stack spacing={2} paddingBottom={3}>
         <Pagination
           page={currentPage}
           count={totalPage}

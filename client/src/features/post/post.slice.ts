@@ -1,12 +1,13 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { getAllPostByLimitService, getAllPostService } from "../../services/post.service";
+import { getAllPostByLimitService, getAllPostService, getLatedPostService } from "../../services/post.service";
 import { IPostState } from "./post.type";
 const initialState: IPostState = {
   dataPosts: {
     listPost: [],
     count: 0,
     totalPage: 0,
-  }
+  },
+  latedPost: []
 };
 
 export const getAllPost = createAsyncThunk(
@@ -26,6 +27,16 @@ export const getAllPostLimitSlice = createAsyncThunk(
     return response;
   }
 );
+
+export const getLatedPost = createAsyncThunk(
+  "post/getLatedPost",
+  async (_, thunkApi) => {
+    const limit = 10;
+    const response = await getLatedPostService(limit);
+    return response;
+  }
+);
+
 const postSlice = createSlice({
   name: "post",
   initialState: initialState,
@@ -42,6 +53,12 @@ const postSlice = createSlice({
         state.dataPosts.listPost = [];
         state.dataPosts.count = 0;
         state.dataPosts.totalPage = 0;
+      })
+      .addCase(getLatedPost.fulfilled, (state, action) => {
+        state.latedPost = action.payload.data
+
+      }).addCase(getLatedPost.rejected, (state, action) => {
+        state.latedPost = []
       })
   },
 });

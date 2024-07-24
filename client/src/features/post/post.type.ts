@@ -21,12 +21,21 @@ export interface Post {
   }
 }
 
+export interface ILatedPost {
+  id: string;
+  title: string;
+  price: number;
+  createdAt: string;
+  Image: {image: string}
+}
+
 export interface IPostState {
   dataPosts: {
     count: number,
     listPost: Post[];
     totalPage: number;
   }
+  latedPost: ILatedPost[]
 }
 
 export interface IPostQuery {
