@@ -71,7 +71,10 @@ const SideBarItem = ({ data, title }: IProps) => {
   const handleClickFilter = (item: TItem) => {
     if ("header" in item) {
       const pathUrl = slug(item.value);
-      navigate({ pathname: pathUrl, search: location.search });
+      navigate(
+        { pathname: pathUrl, search: location.search },
+        { state: { codeCategory: item.code } }
+      );
     } else {
       const newSearchParams: EmptyObject = getParamsUrl(item) || {};
       for (let key of Object.keys(newSearchParams)) {

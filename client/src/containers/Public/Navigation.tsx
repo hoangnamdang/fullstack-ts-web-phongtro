@@ -45,6 +45,7 @@ const Navigation = () => {
                     }`;
                   }}
                   to={slug(d.value)}
+                  state={{ codeCategory: d.code }}
                 >
                   {d.value}
                 </NavLink>

@@ -23,7 +23,11 @@ const HomePage = () => {
         Khu vực nổi bật
       </Typography>
       <Province />
-      <Grid container spacing={2}>
+      <Grid
+        container
+        spacing={2}
+        direction={{ xs: "column-reverse", md: "row" }}
+      >
         <Grid item xs={6} md={8}>
           <List />
         </Grid>

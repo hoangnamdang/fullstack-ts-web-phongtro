@@ -41,8 +41,12 @@ const List = () => {
       queryParams[key] = val;
     });
 
+    if (location.state?.codeCategory) {
+      queryParams.codeCategory = location.state?.codeCategory;
+    }
+
     dispatch(postSlice.getAllPostLimitSlice(queryParams));
-  }, [dispatch, searchParams]);
+  }, [dispatch, searchParams, location]);
 
   const handleChangePage = (evt: React.ChangeEvent<unknown>, page: number) => {
     const newSearchParams: IObjParams = { page: page };

@@ -27,6 +27,7 @@ export const getAllPostByLimit = (query: QueryString.ParsedQs) => new Promise(as
         const maxPrice = query.maxPrice as string;
         const minAcreage = query.minAcreage as string;
         const maxAcreage = query.maxAcreage as string;
+        const codeCategory = query.codeCategory as string;
 
         if(await hasValue(minPrice) && await !hasValue(maxPrice)) {
             querySearch.price = {
@@ -56,6 +57,11 @@ export const getAllPostByLimit = (query: QueryString.ParsedQs) => new Promise(as
         if(await hasValue(minAcreage) && await hasValue(maxAcreage)) {
             querySearch.acreage = {
                 [Op.between] : [minAcreage, maxAcreage]
+            }
+        }
+        if(await hasValue(codeCategory)) {
+            querySearch.categoryCode = {
+                [Op.eq] : codeCategory
             }
         }
 
