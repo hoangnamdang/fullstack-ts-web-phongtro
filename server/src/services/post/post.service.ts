@@ -70,3 +70,18 @@ export const getAllPostByLimit = (query: QueryString.ParsedQs) => new Promise(as
         reject(error)
     }
 })
+
+export const getLatedPost = (query: QueryString.ParsedQs) => new Promise(async (resolve, reject) => {
+try {
+    const limit = Number(query?.limit) || 10;
+    const response = await Post.findAll({raw: true,nest: true, limit:limit, order: [
+        ['createdAt', 'DESC']], include: [{model: Image, attributes: ['image']}], attributes: ['id', 'title', 'price', "createdAt"] })
+    resolve({
+        err: 0,
+        msg: "get lated post success",
+        data: response
+    })
+} catch (error) {
+    reject(error);
+}
+})

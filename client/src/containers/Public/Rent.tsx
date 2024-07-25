@@ -1,7 +1,7 @@
 import React from "react";
 
-const RoomForRent = () => {
+const Rent = () => {
   return <div>RoomForRent</div>;
 };
 
-export default RoomForRent;
+export default Rent;

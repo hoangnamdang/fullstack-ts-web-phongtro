@@ -1,0 +1,4 @@
+https://github.com/microsoft/TypeScript/issues/44373
+https://github.com/microsoft/TypeScript/issues/33591
+
+https://stackoverflow.com/questions/56028635/passing-usestate-as-props-in-typescript

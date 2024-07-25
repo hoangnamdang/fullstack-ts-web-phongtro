@@ -24,3 +24,15 @@ export const getAllByLimit = async (req: Request, res: Response) => {
         })
     }
 }
+
+export const getLatedPost = async (req: Request, res: Response) => {
+    try {
+        const response = await postService.getLatedPost(req.query);
+        res.status(200).json(response);
+    } catch (error) {
+        res.status(500).json({
+            err: -1,
+            msg: "fail to get lated post "+ error
+        })
+    }
+}

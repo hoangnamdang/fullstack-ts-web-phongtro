@@ -28,12 +28,12 @@ const SideBarItem = ({ data, title }: IProps) => {
   const getParamPrice = (item: IFilterPrice) => {
     if (item.maxPrice === -1) {
       return {
-        minPrice: item.minPrice,
+        maxPrice: item.minPrice,
       };
     }
     if (item.minPrice === -1) {
       return {
-        maxPrice: item.maxPrice,
+        minPrice: item.maxPrice,
       };
     }
     return {
@@ -45,12 +45,12 @@ const SideBarItem = ({ data, title }: IProps) => {
   const getParamAcreage = (item: IFilterAcreage) => {
     if (item.maxAcreage === -1) {
       return {
-        minAcreage: item.minAcreage,
+        maxAcreage: item.minAcreage,
       };
     }
     if (item.minAcreage === -1) {
       return {
-        maxAcreage: item.maxAcreage,
+        minAcreage: item.maxAcreage,
       };
     }
     return {
