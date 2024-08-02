@@ -17,4 +17,10 @@ Attribute.hasOne(Post, {foreignKey: "attributesId"})
 Post.belongsTo(User, {foreignKey: "userId", targetKey: "id"})
 User.hasMany(Post, {foreignKey: "userId"})
 
+Post.belongsTo(Overview, {foreignKey: "overviewId", targetKey: "id"})
+Overview.hasOne(Post, {foreignKey: "overviewId"})
+
+Post.belongsTo(Label, {foreignKey: "labelCode", targetKey: "code"})
+Label.hasOne(Post, {foreignKey: "labelCode"})
+
 export {Post, Image, Attribute, User, Category, Label, Overview, Price, Acreage}

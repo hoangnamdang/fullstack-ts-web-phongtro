@@ -6,6 +6,9 @@ import Rent from "./containers/Public/Rent";
 import HomePage from "./containers/Public/HomePage";
 import { useAppDispatch } from "./store/store";
 import * as actionFilter from "./features/filter/filter.slice";
+import DetailPost from "./containers/Public/DetailPost";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 const App: React.FC = () => {
   const dispatch = useAppDispatch();
   useEffect(() => {
@@ -24,6 +27,7 @@ const App: React.FC = () => {
             <Route path={PATH.CHO_THUE_CAN_HO} element={<Rent />} />
             <Route path={PATH.CHO_THUE_MAT_BANG} element={<Rent />} />
             <Route path={PATH.NHA_CHO_THUE} element={<Rent />} />
+            <Route path={PATH.DETAIL_POST} element={<DetailPost />} />
           </Route>
         </Routes>
       </Router>

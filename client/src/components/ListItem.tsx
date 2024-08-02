@@ -4,6 +4,9 @@ import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlin
 import React, { useState } from "react";
 import StarIcon from "@mui/icons-material/Star";
 import { Post } from "../features/post/post.type";
+import { Link } from "react-router-dom";
+import { PATH } from "../utils/path";
+import { slug } from "../utils/generatePath";
 
 const ListItem = ({ post }: { post: Post }) => {
   const [isHover, setIsHover] = useState<boolean>(false);
@@ -57,11 +60,16 @@ const ListItem = ({ post }: { post: Post }) => {
               })}
           </Box>
           <Typography
-            component={"span"}
+            component={Link}
+            to={`${PATH.DETAIL}${slug(post.title)}/${post.id}`}
             sx={{
+              textDecoration: "none",
               fontWeight: "bold",
               color: "red",
               marginBottom: 2,
+              ":hover": {
+                textDecoration: "underline",
+              },
             }}
           >
             {post.title}
@@ -75,7 +83,7 @@ const ListItem = ({ post }: { post: Post }) => {
           >
             {post?.price || 0}
           </Typography>
-          <Typography>{post?.acreage || 0}</Typography>
+          <Typography>{post?.acreage || 0}m2</Typography>
           <Typography
             sx={{
               overflow: "hidden",

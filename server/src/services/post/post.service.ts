@@ -1,4 +1,4 @@
-import {Attribute, Image, Post, User} from "../../models"
+import {Attribute, Image, Label, Overview, Post, User} from "../../models"
 import QueryString from "qs";
 import { hasValue } from "../../utils/commonUtils";
 import { Op } from "sequelize";
@@ -91,3 +91,22 @@ try {
     reject(error);
 }
 })
+
+export const getPost = (idPost: string) => new Promise(async (resolve, reject) => {
+    try {
+        const response = await Post.findOne({raw: true,nest: true, where: {id: idPost}, include: [
+            {model: Image, attributes: ['image']}, 
+            {model: Attribute, attributes: {exclude: ['createdAt', 'updatedAt','id']}}, {model: User, attributes: {exclude: ['createdAt', 'updatedAt', 'password', 'id']}},
+            {model: Overview, attributes: {exclude: ['createdAt', 'updatedAt']}},
+            {model: Label, attributes: ['code', 'value']}
+        ]
+        })
+        resolve({
+            err: 0,
+            msg: "get post success",
+            data: response
+        })
+    } catch (error) {
+        reject(error);
+    }
+    })

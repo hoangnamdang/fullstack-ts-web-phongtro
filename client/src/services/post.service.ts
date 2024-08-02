@@ -17,3 +17,8 @@ export const getLatedPostService = async (limit: number) => {
   const response = await axios.get("/api/v1/post/lated-post", {params: {limit}});
   return response.data
 }
+
+export const getPostService = async (idPost: string) => {
+  const response = await axios.get("/api/v1/post/get-post", {params: {idPost}});
+  return response.data
+}

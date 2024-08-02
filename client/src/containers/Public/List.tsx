@@ -1,5 +1,5 @@
 import { Box, Button, Pagination, Stack, Typography } from "@mui/material";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import ListItem from "../../components/ListItem";
 import { useAppDispatch, useAppSelector } from "../../store/store";
 import * as postSlice from "../../features/post/post.slice";
@@ -15,12 +15,11 @@ interface IObjParams {
 }
 const List = () => {
   const [currentPage, setCurrentPage] = useState(1);
-  const refBox = useRef<null | HTMLElement>(null);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const location = useLocation();
   const [searchParams] = useSearchParams();
-  const { listPost, totalPage } = useAppSelector(
+  const { listPost, totalPage, count } = useAppSelector(
     (state) => state.post.dataPosts
   );
 
@@ -28,10 +27,6 @@ const List = () => {
     let page = 1;
     if (searchParams && searchParams.get("page")) {
       page = Number(searchParams.get("page"));
-    }
-
-    if (refBox.current) {
-      refBox.current.scrollIntoView({ behavior: "smooth" });
     }
 
     setCurrentPage(page);
@@ -62,10 +57,10 @@ const List = () => {
   };
 
   return (
-    <Box ref={refBox} sx={{ backgroundColor: "white", marginBottom: 4 }}>
+    <Box sx={{ backgroundColor: "white", marginBottom: 4 }}>
       <Box sx={{ padding: [3, 2] }}>
         <Typography sx={{ fontWeight: "bold" }}>
-          Tổng 128.774 kết quả
+          Tổng {count} kết quả
         </Typography>
         <Box display={"flex"} alignContent={"center"} gap={2}>
           <Typography padding={"6px"}>Sắp xếp:</Typography>

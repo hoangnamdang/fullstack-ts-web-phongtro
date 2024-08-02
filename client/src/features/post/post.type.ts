@@ -6,19 +6,37 @@ export interface Post {
   address: string;
   categoryCode: string;
   description: string;
-  price: string,
-  acreage: string,
+  price: string;
+  acreage: string;
   Image: { image: string };
-  Attribute:  {
-    published: string,
-    hashtag: string};
+  Attribute: {
+    published: string;
+    hashtag: string;
+  };
   User: {
-    name: string,
-    phone: string,
-    zalo: string,
-    avatar: string,
-    fbUrl: string
-  }
+    name: string;
+    phone: string;
+    zalo: string;
+    avatar: string;
+    fbUrl: string;
+  };
+}
+
+export interface IDetailPost extends Post {
+  Overview: {
+    area: string;
+    bonus: string;
+    code: string;
+    created: string;
+    expired: string;
+    id: string;
+    target: string;
+    type: string;
+  };
+  Label: {
+    code: string;
+    value: string;
+  };
 }
 
 export interface ILatedPost {
@@ -26,18 +44,18 @@ export interface ILatedPost {
   title: string;
   price: number;
   createdAt: string;
-  Image: {image: string}
+  Image: { image: string };
 }
 
 export interface IPostState {
   dataPosts: {
-    count: number,
+    count: number;
     listPost: Post[];
     totalPage: number;
-  }
-  latedPost: ILatedPost[]
+  };
+  latedPost: ILatedPost[];
 }
 
 export interface IPostQuery {
-  limit: string
+  limit: string;
 }

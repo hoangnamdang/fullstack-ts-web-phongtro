@@ -36,3 +36,16 @@ export const getLatedPost = async (req: Request, res: Response) => {
         })
     }
 }
+
+export const getPost = async (req: Request, res: Response) => {
+    try {
+        const idPost = req.query.idPost as string;
+        const response = await postService.getPost(idPost);
+        res.status(200).json(response);
+    } catch (error) {
+        res.status(500).json({
+            err: -1,
+            msg: "fail to get post "+ error
+        })
+    }
+}

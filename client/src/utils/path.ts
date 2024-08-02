@@ -6,4 +6,6 @@ export const PATH = {
   NHA_CHO_THUE: "nha-cho-thue",
   CHO_THUE_CAN_HO: "cho-thue-can-ho",
   CHO_THUE_MAT_BANG: "cho-thue-mat-bang",
+  DETAIL: "/chi-tiet/",
+  DETAIL_POST: "chi-tiet/:title/:postId",
 };
